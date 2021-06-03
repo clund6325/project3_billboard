@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+roles = ['billboard', 'artist', 'song']
+1.times do
+  billboard = Billboard.create(
+    # role: roles.sample,
+    title: "Billboard Top 100"
+  )
+
+  100.times do
+    artist = Artist.create(
+      name: Faker::Hipster.words
+    )
+    
+    song = Song.create(
+      name: Faker::Hipster.sentence
+    )
+  end
+
+end
+
+puts 'Data Seeded'

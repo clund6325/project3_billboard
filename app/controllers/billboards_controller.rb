@@ -3,7 +3,7 @@ class BillboardsController < ApplicationController
 
   def index
     @billboards = Billboard.all
-    render component: 'Billboards', props: {billboards: @billboards}
+    render component: 'Billboards', props:{billboards: @billboards}
   end
 
   def show
@@ -21,6 +21,7 @@ class BillboardsController < ApplicationController
       redirect_to root_path
     else
       render component: 'BillboardNew', props: { billboard: @billboard}
+    end
   end
 
   def edit
@@ -32,12 +33,14 @@ class BillboardsController < ApplicationController
       redirect_to root_path
     else
       render component: 'BillboardEdit', props: {billboard: @billboard}
+    end
   end
 
   def destroy
     @billboard.destroy
     redirect_to root_path
   end
+
   private
     def set_billboard
       @billboard = Billboard.find(params[:id])
@@ -45,4 +48,5 @@ class BillboardsController < ApplicationController
     def billboard_params
       params.require(:billboard).permit(:title, :body)
     end
+  
 end
